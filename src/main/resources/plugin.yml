@@ -1,0 +1,19 @@
+name: Man10Essentials
+version: '1.0-SNAPSHOT'
+main: io.github.uttmangosteen.man10Essentials.Main
+api-version: '1.20'
+
+commands:
+  ec:
+    permission: red.man10.ec
+  ohatsukit:
+    usage: "§d=== Man10Essentials help ===\n
+            §d/ohatsukit register ...今の自分の装備、インベントリのアイテムを登録\n
+            §d/ohatsukit set [mcid] ...mcidのuserのinvをkidで上書き\n
+            §d============================="
+    permission: red.man10.ohatsukit
+permissions:
+  red.man10.ec:
+    default: op
+  red.man10.ohatsukit:
+    default: op
