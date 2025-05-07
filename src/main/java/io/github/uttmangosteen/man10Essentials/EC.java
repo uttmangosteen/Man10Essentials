@@ -1,5 +1,6 @@
 package io.github.uttmangosteen.man10Essentials;
 
+import org.bukkit.Sound;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -8,7 +9,6 @@ import org.jetbrains.annotations.NotNull;
 
 public class EC implements CommandExecutor {
     private final JavaPlugin plugin;
-
     public EC(JavaPlugin plugin) {this.plugin = plugin;}
 
     @Override
@@ -16,6 +16,7 @@ public class EC implements CommandExecutor {
         if (!(sender instanceof Player p)) return true;
         if (!sender.hasPermission("red.man10.ec")) return true;
         p.openInventory(p.getEnderChest());
+        p.playSound(p.getLocation(), Sound.BLOCK_ENDER_CHEST_OPEN, 1, 1);
         return true;
     }
 }
