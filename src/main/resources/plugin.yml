@@ -7,10 +7,9 @@ commands:
   ec:
     permission: red.man10.ec
   ohatsukit:
-    usage: "§d=== Man10Essentials help ===\n
-            §d/ohatsukit register ...今の自分の装備、インベントリのアイテムを登録\n
-            §d/ohatsukit set [mcid] ...mcidのuserのinvをkidで上書き\n
-            §d============================="
+    usage: "/ohatsukit <on|off>\n
+            man10kitのコマンド/kit set [mcid] newbie 発行してるだけ
+            man10でだけonにする想定でいます"
     permission: red.man10.ohatsukit
 permissions:
   red.man10.ec:

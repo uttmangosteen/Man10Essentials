@@ -11,6 +11,7 @@ public final class Main extends JavaPlugin {
     public void onEnable() {
         plugin = this;
         Objects.requireNonNull(getCommand("ec")).setExecutor(new EC(this));
-        Objects.requireNonNull(getCommand("ohatsukit")).setExecutor(new OhatsuKit(this));
+        Objects.requireNonNull(getCommand("ohatsukit")).setExecutor(new OhatsukitCommand(this));
+        getServer().getPluginManager().registerEvents(new CheckNewPlayer(this), this);
     }
 }
