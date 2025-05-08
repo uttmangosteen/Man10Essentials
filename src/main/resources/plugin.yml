@@ -7,9 +7,10 @@ commands:
   ec:
     permission: red.man10.ec
   ohatsukit:
-    usage: "/ohatsukit <on|off> ...man10でだけonを打つ想定\n
-            /ohatsukit register ...自分の装備と所持品がohatsukitになる\n
-            /ohatsukit give [mcid] ...ohatsukitをplayerにgiveする(溢れたら消える)\n"
+    usage: "
+    §d/ohatsukit <on|off> ...man10でだけonを打つ想定\n
+    §d/ohatsukit register ...自分の装備と所持品がohatsukitになる\n
+    §d/ohatsukit give [mcid] ...ohatsukitをplayerにgiveする(溢れたら消える)\n"
     permission: red.man10.ohatsukit
 permissions:
   red.man10.ec:
