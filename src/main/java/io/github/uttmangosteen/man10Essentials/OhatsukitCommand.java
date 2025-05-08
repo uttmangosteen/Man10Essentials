@@ -96,7 +96,7 @@ public class OhatsukitCommand implements CommandExecutor {
                 ItemStack[] targetInv = targetPlayer.getInventory().getContents();
                 if (inv != null) {
 
-                    //同じ場所が咲いていたらできるだけ同じ場所へ
+                    //同じ場所が空いていたらできるだけ同じ場所へ
                     for (int i = 0; i < inv.length; i++) {
                         if (inv[i] != null && targetInv[i] == null) {
                             targetInv[i] = inv[i];
@@ -107,7 +107,7 @@ public class OhatsukitCommand implements CommandExecutor {
                     int invIndex = 0;
                     for (ItemStack invItem : inv) {
                         if (invItem != null) {
-                            for (; invIndex < targetInv.length; invIndex++) {
+                            for (; invIndex < 36; invIndex++) {
                                 if (targetInv[invIndex] == null) {
                                     targetInv[invIndex] = invItem;
                                     break;
