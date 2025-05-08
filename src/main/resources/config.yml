@@ -1,1 +1,4 @@
-ohatsukit: false
+ohatsukit:
+  mode: false
+  inv:
+  armor:

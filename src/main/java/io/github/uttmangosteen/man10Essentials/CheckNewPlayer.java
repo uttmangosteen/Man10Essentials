@@ -13,10 +13,10 @@ public class CheckNewPlayer implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
-        if (!plugin.getConfig().getBoolean("ohatsukit", false)) return;
+        if (!plugin.getConfig().getBoolean("ohatsukit.mode", false)) return;
         Player player = event.getPlayer();
         if (!player.hasPlayedBefore()){
-            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "kit set " + player.getName() + " newbie");
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "ohatsukit give " + player.getName());
             player.sendMessage("§e§l国王様より初期装備が下賜された！");
         }
     }
