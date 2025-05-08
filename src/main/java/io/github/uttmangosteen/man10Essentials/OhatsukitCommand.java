@@ -103,21 +103,18 @@ public class OhatsukitCommand implements CommandExecutor {
                             inv[i] = null;
                         }
                     }
+                    targetPlayer.getInventory().setContents(targetInv);
                     // 残りのアイテムを空いているスロットに追加
-                    int invIndex = 0;
                     for (ItemStack invItem : inv) {
                         if (invItem != null) {
-                            for (; invIndex < 36; invIndex++) {
-                                if (targetInv[invIndex] == null) {
-                                    targetInv[invIndex] = invItem;
-                                    break;
-                                }
+                            if (targetPlayer.getInventory().firstEmpty() != -1) {
+                                targetPlayer.getInventory().addItem(invItem);
+                                continue;
                             }
                             targetPlayer.sendMessage("§c" + targetPlayer.getName() + "のインベントリに空きがなかったため一部のアイテムは消えました");
                             break;
                         }
                     }
-                    targetPlayer.getInventory().setContents(targetInv);
                 }
 
                 sender.sendMessage("§a" + targetPlayer.getName() + "に初期装備を付与しました");
