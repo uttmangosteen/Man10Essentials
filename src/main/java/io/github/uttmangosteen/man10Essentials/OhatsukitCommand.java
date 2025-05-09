@@ -56,11 +56,13 @@ public class OhatsukitCommand implements CommandExecutor {
             case 1:
                 switch (args[0]) {
                     case "on":
+                        Main.enabled=true;
                         plugin.getConfig().set("ohatsukit.mode", true);
                         plugin.saveConfig();
                         sender.sendMessage("§a初期装備を配布します");
                         return true;
                     case "off":
+                        Main.enabled=false;
                         plugin.getConfig().set("ohatsukit.mode", false);
                         plugin.saveConfig();
                         sender.sendMessage("§c初期装備は配られません");

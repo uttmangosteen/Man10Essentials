@@ -2,6 +2,8 @@ name: Man10Essentials
 version: '1.0-SNAPSHOT'
 main: io.github.uttmangosteen.man10Essentials.Main
 api-version: '1.20'
+softdepend:
+  - HuskSync
 
 commands:
   ec:
