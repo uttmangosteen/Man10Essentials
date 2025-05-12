@@ -7,14 +7,14 @@ public final class MWhitelist {
     public MWhitelist(JavaPlugin plugin) {
         boolean mode = Bukkit.hasWhitelist();
         Bukkit.setWhitelist(true);
-        plugin.getLogger().info("§awhitelistをonにしました");
+        plugin.getLogger().info("whitelistをonにしました");
         if (mode) return;
         int waitSeconds = plugin.getConfig().getInt("mwhitelist.waitSeconds", 60);
         if (waitSeconds <= 0) return;
         plugin.getLogger().info(waitSeconds + "秒後にwhitelistがOFFになります");
         Bukkit.getScheduler().runTaskLater(plugin, () -> {
             Bukkit.setWhitelist(false);
-            plugin.getLogger().info("§aawhitelistをoffにしました");
+            plugin.getLogger().info("awhitelistをoffにしました");
         }, waitSeconds * 20L);
     }
 }
