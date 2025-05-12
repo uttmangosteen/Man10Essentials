@@ -29,7 +29,7 @@ public class Ohatsukit_C implements CommandExecutor {
             for (ItemStack item : items) dataOutput.writeObject(item);
             dataOutput.close();
             return java.util.Base64.getEncoder().encodeToString(outputStream.toByteArray());
-        } catch (Exception e) {;
+        } catch (Exception e) {
             return null;
         }
     }

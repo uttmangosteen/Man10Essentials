@@ -1,6 +1,5 @@
 package io.github.uttmangosteen.man10Essentials.Other;
 
-import io.github.uttmangosteen.man10Essentials.Global;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
