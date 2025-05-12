@@ -12,7 +12,6 @@ import java.util.UUID;
 
 public class Ohatsukit_E implements Listener {
 
-
     private final ArrayList<UUID> unNewbies=new ArrayList<>();
 
     @EventHandler
@@ -34,5 +33,4 @@ public class Ohatsukit_E implements Listener {
         }
         unNewbies.remove(player.getUniqueId());
     }
-
 }

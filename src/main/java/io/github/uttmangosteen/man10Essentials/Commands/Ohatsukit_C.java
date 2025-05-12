@@ -97,7 +97,6 @@ public class Ohatsukit_C implements CommandExecutor {
                 ItemStack[] inv = itemStackArrayFromBase64(savedInv);
                 ItemStack[] targetInv = targetPlayer.getInventory().getContents();
                 if (inv != null) {
-
                     //同じ場所が空いていたらできるだけ同じ場所へ
                     for (int i = 0; i < inv.length; i++) {
                         if (inv[i] != null && targetInv[i] == null) {
@@ -118,7 +117,6 @@ public class Ohatsukit_C implements CommandExecutor {
                         }
                     }
                 }
-
                 sender.sendMessage(Global.prefix + "§a" + targetPlayer.getName() + "に初期装備を付与しました§r");
                 return true;
         }
