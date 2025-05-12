@@ -1,5 +1,6 @@
-package io.github.uttmangosteen.man10Essentials;
+package io.github.uttmangosteen.man10Essentials.Commands;
 
+import io.github.uttmangosteen.man10Essentials.Global;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -12,10 +13,10 @@ import org.bukkit.util.io.BukkitObjectOutputStream;
 import org.jetbrains.annotations.NotNull;
 import org.bukkit.Bukkit;
 
-public class OhatsukitCommand implements CommandExecutor {
+public class Ohatsukit_C implements CommandExecutor {
     private final JavaPlugin plugin;
 
-    public OhatsukitCommand(JavaPlugin plugin) {
+    public Ohatsukit_C(JavaPlugin plugin) {
         this.plugin = plugin;
     }
 
@@ -56,28 +57,27 @@ public class OhatsukitCommand implements CommandExecutor {
             case 1:
                 switch (args[0]) {
                     case "on":
-                        Main.enabled=true;
+                        Global.enabled_give_ohatsukit = true;
                         plugin.getConfig().set("ohatsukit.mode", true);
                         plugin.saveConfig();
-                        sender.sendMessage("§a初期装備を配布します");
+                        sender.sendMessage(Global.prefix + "§a初期装備を配布します§r");
                         return true;
                     case "off":
-                        Main.enabled=false;
+                        Global.enabled_give_ohatsukit = false;
                         plugin.getConfig().set("ohatsukit.mode", false);
                         plugin.saveConfig();
-                        sender.sendMessage("§c初期装備は配られません");
+                        sender.sendMessage(Global.prefix + "§c初期装備は配られません§r");
                         return true;
                     case "register":
-                        if (!(sender instanceof Player)) {
-                            sender.sendMessage("§cこのコマンドはプレイヤーのみ実行できます");
+                        if (!(sender instanceof Player player)) {
+                            sender.sendMessage(Global.prefix + "§cこのコマンドはプレイヤーのみ実行できます§r");
                             return true;
                         }
-                        Player player = (Player) sender;
                         PlayerInventory inv = player.getInventory();
                         String inventoryBase64 = itemStackArrayToBase64(inv.getContents());
                         plugin.getConfig().set("ohatsukit.inv", inventoryBase64);
                         plugin.saveConfig();
-                        sender.sendMessage("§a現在の装備と所持品を登録しました");
+                        sender.sendMessage(Global.prefix + "§a現在の装備と所持品を登録しました§r");
                         return true;
                     default:
                         return false;
@@ -86,12 +86,12 @@ public class OhatsukitCommand implements CommandExecutor {
                 if (!args[0].equalsIgnoreCase("give")) return false;
                 String savedInv = plugin.getConfig().getString("ohatsukit.inv");
                 if (savedInv == null) {
-                    sender.sendMessage("§ckitが登録されていません");
+                    sender.sendMessage(Global.prefix + "§ckitが登録されていません§r");
                     return true;
                 }
                 Player targetPlayer = Bukkit.getPlayer(args[1]);
                 if (targetPlayer == null) {
-                    sender.sendMessage("§cプレイヤーが見つかりません");
+                    sender.sendMessage(Global.prefix + "§cプレイヤーが見つかりません§r");
                     return true;
                 }
                 ItemStack[] inv = itemStackArrayFromBase64(savedInv);
@@ -113,13 +113,13 @@ public class OhatsukitCommand implements CommandExecutor {
                                 targetPlayer.getInventory().addItem(invItem);
                                 continue;
                             }
-                            targetPlayer.sendMessage("§c" + targetPlayer.getName() + "のインベントリに空きがなかったため一部のアイテムは消えました");
+                            targetPlayer.sendMessage(Global.prefix + "§c" + targetPlayer.getName() + "のインベントリに空きがなかったため一部のアイテムは消えました§r");
                             break;
                         }
                     }
                 }
 
-                sender.sendMessage("§a" + targetPlayer.getName() + "に初期装備を付与しました");
+                sender.sendMessage(Global.prefix + "§a" + targetPlayer.getName() + "に初期装備を付与しました§r");
                 return true;
         }
         return false;
