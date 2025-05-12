@@ -29,8 +29,7 @@ public class Ohatsukit_C implements CommandExecutor {
             for (ItemStack item : items) dataOutput.writeObject(item);
             dataOutput.close();
             return java.util.Base64.getEncoder().encodeToString(outputStream.toByteArray());
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception e) {;
             return null;
         }
     }
@@ -45,7 +44,6 @@ public class Ohatsukit_C implements CommandExecutor {
             dataInput.close();
             return items;
         } catch (Exception e) {
-            e.printStackTrace();
             return null;
         }
     }

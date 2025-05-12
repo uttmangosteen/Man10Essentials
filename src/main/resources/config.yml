@@ -1,3 +1,6 @@
 ohatsukit:
   mode: false
   inv:
+
+mwhitelist:
+  waitSeconds: 60
