@@ -18,15 +18,16 @@ public final class Main extends JavaPlugin {
     public void onEnable() {
         plugin = this;
         saveDefaultConfig();
+
         new MWhitelist(this);
 
         Global.enabled_give_ohatsukit = getConfig().getBoolean("ohatsukit.mode", false);
+        Objects.requireNonNull(getCommand("ohatsukit")).setExecutor(new Ohatsukit_C(this));
+        getServer().getPluginManager().registerEvents(new Ohatsukit_E(), this);
 
         Objects.requireNonNull(getCommand("ec")).setExecutor(new EC_C());
-        Objects.requireNonNull(getCommand("mhat")).setExecutor(new MHat_C());
-        Objects.requireNonNull(getCommand("ohatsukit")).setExecutor(new Ohatsukit_C(this));
 
+        Objects.requireNonNull(getCommand("mhat")).setExecutor(new MHat_C());
         getServer().getPluginManager().registerEvents(new Mhat_E(), this);
-        getServer().getPluginManager().registerEvents(new Ohatsukit_E(), this);
     }
 }
