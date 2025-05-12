@@ -14,7 +14,7 @@ public final class MWhitelist {
         plugin.getLogger().info(waitSeconds + "秒後にwhitelistがOFFになります");
         Bukkit.getScheduler().runTaskLater(plugin, () -> {
             Bukkit.setWhitelist(false);
-            plugin.getLogger().info("awhitelistをoffにしました");
+            plugin.getLogger().info("whitelistをoffにしました");
         }, waitSeconds * 20L);
     }
 }
