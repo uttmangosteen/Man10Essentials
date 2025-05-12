@@ -12,7 +12,7 @@ commands:
     permission: red.man10.mhat
   ohatsukit:
     usage: "
-    §d/ohatsukit <on|off> ...man10onじゃない鯖に最初に入るとkitが貰えない\n
+    §d/ohatsukit <on|off> ...onじゃない鯖に最初に入るとkitが貰えない\n
     §d/ohatsukit register ...自分の装備と所持品がohatsukitになる\n
     §d/ohatsukit give [mcid] ...ohatsukitをplayerにgiveする(溢れた分は消える)\n"
     permission: red.man10.ohatsukit
