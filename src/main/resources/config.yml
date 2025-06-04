@@ -4,3 +4,7 @@ ohatsukit:
 
 mwhitelist:
   waitSeconds: 60
+
+#luckparmsで検知するop権限の名前:
+checkiop:
+  permission: group.op

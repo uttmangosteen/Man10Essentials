@@ -2,6 +2,7 @@ package io.github.uttmangosteen.man10Essentials;
 
 import io.github.uttmangosteen.man10Essentials.Commands.EC_C;
 import io.github.uttmangosteen.man10Essentials.Commands.MHat_C;
+import io.github.uttmangosteen.man10Essentials.Events.CheckOP_E;
 import io.github.uttmangosteen.man10Essentials.Other.MWhitelist;
 import io.github.uttmangosteen.man10Essentials.Commands.Ohatsukit_C;
 import io.github.uttmangosteen.man10Essentials.Events.Mhat_E;
@@ -29,5 +30,7 @@ public final class Main extends JavaPlugin {
 
         Objects.requireNonNull(getCommand("mhat")).setExecutor(new MHat_C());
         getServer().getPluginManager().registerEvents(new Mhat_E(), this);
+
+        getServer().getPluginManager().registerEvents(new CheckOP_E(), this);
     }
 }
