@@ -23,3 +23,5 @@ permissions:
     default: op
   red.man10.ohatsukit:
     default: op
+  group.gm:
+    default: false

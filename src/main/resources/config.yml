@@ -1,10 +1,8 @@
+#man10でだけ mode: true 想定
 ohatsukit:
   mode: false
   inv:
 
+#鯖k起動から何秒間whitelistを付けるか
 mwhitelist:
   waitSeconds: 60
-
-#luckparmsで検知するop権限の名前:
-checkiop:
-  permission: group.op
