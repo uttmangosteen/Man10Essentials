@@ -1,6 +1,5 @@
 package io.github.uttmangosteen.man10Essentials.Events;
 
-import io.github.uttmangosteen.man10Essentials.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
