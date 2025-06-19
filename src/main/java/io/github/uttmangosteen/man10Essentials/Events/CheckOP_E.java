@@ -1,5 +1,6 @@
 package io.github.uttmangosteen.man10Essentials.Events;
 
+import io.github.uttmangosteen.man10Essentials.Global;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -9,6 +10,7 @@ import org.bukkit.event.player.PlayerLoginEvent;
 public class CheckOP_E implements Listener {
     @EventHandler
     public void onLogin(PlayerLoginEvent e) {
+        if (!Global.enabled_opcheck) return;
         Player p = e.getPlayer();
         if (!p.isOp() || p.hasPermission("group.gm")) return;
         p.setOp(false);

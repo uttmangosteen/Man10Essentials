@@ -6,3 +6,7 @@ ohatsukit:
 #鯖k起動から何秒間whitelistを付けるか
 mwhitelist:
   waitSeconds: 60
+
+#luckparmsでgroup.gm持ってないopを確認するかどうか
+opcheck:
+  mode: false

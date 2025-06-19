@@ -31,6 +31,7 @@ public final class Main extends JavaPlugin {
         Objects.requireNonNull(getCommand("mhat")).setExecutor(new MHat_C());
         getServer().getPluginManager().registerEvents(new Mhat_E(), this);
 
+        Global.enabled_opcheck = getConfig().getBoolean("opcheck.mode", false);
         getServer().getPluginManager().registerEvents(new CheckOP_E(), this);
     }
 }
