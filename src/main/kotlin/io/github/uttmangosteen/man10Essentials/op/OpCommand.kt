@@ -1,6 +1,8 @@
 package io.github.uttmangosteen.man10Essentials.op
 
 import io.github.uttmangosteen.man10Essentials.Main
+import io.github.uttmangosteen.man10Essentials.invsee.InvseeCommand
+import io.github.uttmangosteen.man10Essentials.invsee.InvseeSessions
 import io.github.uttmangosteen.man10Essentials.newbiekit.NewbieKitCommand
 import io.github.uttmangosteen.man10Essentials.op.status.StatusCommand
 import org.bukkit.command.Command
@@ -10,10 +12,12 @@ import org.bukkit.command.TabCompleter
 
 class OpCommand(
     plugin: Main,
+    invseeSessions: InvseeSessions,
 ) : CommandExecutor, TabCompleter {
 
     private val statusCommand = StatusCommand(plugin)
     private val newbieKitCommand = NewbieKitCommand(plugin)
+    private val invseeCommand = InvseeCommand(invseeSessions)
 
     override fun onCommand(
         sender: CommandSender,
@@ -27,7 +31,7 @@ class OpCommand(
         when (args[0].lowercase()) {
             "status" -> statusCommand.execute(sender, args)
             "newbiekit" -> newbieKitCommand.execute(sender, args)
-            // "invsee" ->
+            "invsee" -> invseeCommand.execute(sender, args)
         }
         return true
     }
@@ -50,6 +54,7 @@ class OpCommand(
             else -> when (args[0]) {
                 "status" -> statusCommand.getTabCompletions(args)
                 "newbiekit" -> newbieKitCommand.getTabCompletions(args)
+                "invsee" -> invseeCommand.getTabCompletions(args)
                 else -> emptyList()
             }
         }

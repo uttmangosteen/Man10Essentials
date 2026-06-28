@@ -15,7 +15,7 @@ class HatCommand : CommandExecutor {
         args: Array<out String>
     ): Boolean {
         if (sender !is Player) return true
-        if (!sender.hasPermission("man10essentials.mhat")) return true
+        if (!sender.hasPermission("man10essentials.hat")) return true
 
         val senderInv = sender.inventory
 

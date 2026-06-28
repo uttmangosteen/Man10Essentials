@@ -3,6 +3,8 @@ package io.github.uttmangosteen.man10Essentials
 import io.github.uttmangosteen.man10Essentials.ec.EcCommand
 import io.github.uttmangosteen.man10Essentials.hat.HatCommand
 import io.github.uttmangosteen.man10Essentials.hat.HatEvent
+import io.github.uttmangosteen.man10Essentials.invsee.InvseeEvent
+import io.github.uttmangosteen.man10Essentials.invsee.InvseeSessions
 import io.github.uttmangosteen.man10Essentials.newbiekit.NewbieKitEvent
 import io.github.uttmangosteen.man10Essentials.op.OpCommand
 import io.github.uttmangosteen.man10Essentials.opcheck.OpCheckEvent
@@ -11,6 +13,7 @@ import org.bukkit.plugin.java.JavaPlugin
 
 class Main : JavaPlugin() {
     lateinit var pluginConfig: PluginConfig
+    private val invseeSessions = InvseeSessions()
 
     override fun onEnable() {
         startupProtectionByWhitelist()
@@ -26,7 +29,7 @@ class Main : JavaPlugin() {
         server.pluginManager.registerEvents(HatEvent(), this)
         server.pluginManager.registerEvents(WhitelistEvent(this), this)
         server.pluginManager.registerEvents(OpCheckEvent(this), this)
-
+        server.pluginManager.registerEvents(InvseeEvent(invseeSessions), this)
 
         if (server.pluginManager.getPlugin("HuskSync") != null) {
             server.pluginManager.registerEvents(NewbieKitEvent(this), this)
@@ -40,7 +43,7 @@ class Main : JavaPlugin() {
 
         getCommand("hat")?.setExecutor(HatCommand())
 
-        val opCommand = OpCommand(this)
+        val opCommand = OpCommand(this, invseeSessions)
         getCommand("man10essentials")?.setExecutor(opCommand)
         getCommand("man10essentials")?.tabCompleter = opCommand
     }
