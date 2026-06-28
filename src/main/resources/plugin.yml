@@ -1,0 +1,41 @@
+name: Man10Essentials
+version: '${version}'
+
+main: io.github.uttmangosteen.man10Essentials.Main
+api-version: '1.21'
+load: POSTWORLD
+
+commands:
+  # ユーザー用コマンド
+  ec:
+    permission: man10essentials.ec
+  hat:
+    permission: man10essentials.mhat
+
+  # 管理者用コマンドはこれの次の引数で指定
+  man10essentials:
+    permission: man10essentials.op
+    # 他プラグインとかぶりそうなので
+    # aliases: [me]
+    usage: |
+      §6========== Man10Essentials help ==========
+      §6 /ec - 自分のエンダーチェストを開く
+      §6 /hat - メインハンドとヘッドスロットのアイテムを入れ替える
+      
+      §6 以下 man10essentials → me
+      §6 /me status - プラグインの各機能の有効/無効設定表示
+      §6 /me status <status_name> <true|false> - 各機能の設定
+      
+      §6 /me invsee <inv|ec> <name> - 人のinvを見る
+      
+      §6 /me newbiekit register - 自分のinvをkitとして登録する
+      §6 /me newbiekit give <mcid> - newbiekitを与える
+      §6==========================================
+
+permissions:
+  man10essentials.ec:
+    default: op
+  man10essentials.mhat:
+    default: op
+  man10essentials.op:
+    default: op

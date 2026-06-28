@@ -1,0 +1,17 @@
+# このプラグインのprefix
+prefix: "§f§l[§a§lM§d§lE§f§l] "
+
+# サーバー起動60秒後にwhitelistをどうするか
+whitelist:
+  status: true
+
+# 初ログインユーザーへの初心者キット配布設定
+# @man10のみ status: true 想定
+newbiekit:
+  status: false
+  # 配るキットのデータ
+  inv:
+
+# luckparmsでgroup.gm持ってないopを確認するかどうか
+opcheck:
+  status: false
