@@ -5,6 +5,8 @@ main: io.github.uttmangosteen.man10Essentials.Main
 api-version: '1.21'
 load: POSTWORLD
 
+softdepend: [HuskSync, LuckPerms]
+
 commands:
   # ユーザー用コマンド
   ec:
@@ -19,17 +21,24 @@ commands:
     # aliases: [me]
     usage: |
       §6========== Man10Essentials help ==========
-      §6 /ec - 自分のエンダーチェストを開く
-      §6 /hat - メインハンドとヘッドスロットのアイテムを入れ替える
+      §6このpluginは、
+      §6・頭に何でもかぶれるように
+      §6・初ログインの人への初期装備付与
+      §6・サーバー起動時1分間のwhitelistの設定
+      §6・LuckPermsでgroup.gmを持っていないOPの排除
+      §6を行っています
       
-      §6 以下 man10essentials → me
-      §6 /me status - プラグインの各機能の有効/無効設定表示
-      §6 /me status <status_name> <true|false> - 各機能の設定
+      §6/ec - 自分のエンダーチェストを開く
+      §6/hat - メインハンドとヘッドスロットのアイテムを入れ替える
       
-      §6 /me invsee <inv|ec> <name> - 人のinvを見る
+      §6以下op用、 me → man10essentials
+      §6/me status - プラグインの各機能の有効/無効設定の確認
+      §6/me status <status_name> <true|false> - 各機能の設定
       
-      §6 /me newbiekit register - 自分のinvをkitとして登録する
-      §6 /me newbiekit give <mcid> - newbiekitを与える
+      §6/me invsee <inv|ec> <name> - 人のinvを見る
+      
+      §6/me newbiekit register - 自分のinvをkitとして登録する
+      §6/me newbiekit give <mcid> - newbiekitを与える
       §6==========================================
 
 permissions:
