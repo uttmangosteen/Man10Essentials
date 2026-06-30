@@ -8,7 +8,6 @@ class InvseeGui(
     val targetUuid: UUID,
     val targetName: String,
     val type: InvseeType,
-    val source: InvseeSource,
     val storage: InvseeStorage,
 ) : InventoryHolder {
     private var inventory: Inventory? = null
@@ -20,9 +19,4 @@ class InvseeGui(
     fun setInventory(inventory: Inventory) {
         this.inventory = inventory
     }
-}
-
-enum class InvseeSource {
-    ONLINE,
-    HUSKSYNC_OFFLINE,
 }

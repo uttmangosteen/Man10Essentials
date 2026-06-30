@@ -1,7 +1,6 @@
 package io.github.uttmangosteen.man10Essentials.op
 
 import io.github.uttmangosteen.man10Essentials.Main
-import io.github.uttmangosteen.man10Essentials.invsee.HuskSyncInvseeAccessor
 import io.github.uttmangosteen.man10Essentials.invsee.InvseeCommand
 import io.github.uttmangosteen.man10Essentials.newbiekit.NewbieKitCommand
 import io.github.uttmangosteen.man10Essentials.op.status.StatusCommand
@@ -12,12 +11,11 @@ import org.bukkit.command.TabCompleter
 
 class OpCommand(
     plugin: Main,
-    huskSyncAccessor: HuskSyncInvseeAccessor?,
 ) : CommandExecutor, TabCompleter {
 
     private val statusCommand = StatusCommand(plugin)
     private val newbieKitCommand = NewbieKitCommand(plugin)
-    private val invseeCommand = InvseeCommand(plugin, huskSyncAccessor)
+    private val invseeCommand = InvseeCommand()
 
     override fun onCommand(
         sender: CommandSender,
