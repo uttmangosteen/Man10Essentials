@@ -6,6 +6,7 @@ import org.bukkit.event.Listener
 import org.bukkit.event.inventory.ClickType
 import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.event.inventory.InventoryDragEvent
+import org.bukkit.inventory.ItemStack
 
 class InvseeEvent : Listener {
     @EventHandler
@@ -26,7 +27,7 @@ class InvseeEvent : Listener {
         if (guiSlot < 0 || guiSlot >= e.view.topInventory.size) return
         if (gui.type == InvseeType.ARMOR && guiSlot > 4) return
 
-        swapWithTarget(viewer, gui, gui.storage, guiSlot, e)
+        swapWithTarget(viewer, gui, guiSlot, e)
     }
 
     @EventHandler
@@ -43,35 +44,48 @@ class InvseeEvent : Listener {
     private fun swapWithTarget(
         viewer: Player,
         gui: InvseeGui,
-        storage: InvseeStorage,
         guiSlot: Int,
         e: InventoryClickEvent,
     ) {
-        val targetItem = storage.getItem(gui.type, guiSlot)?.clone()
-        val cursorItem = viewer.itemOnCursor.clone().takeUnless { it.type.isAir }
+        val slotItem = e.view.topInventory.getItem(guiSlot)
+        val actualItem = gui.storage.getItem(gui.type, guiSlot)
+        val cursorItem = viewer.itemOnCursor.takeUnless { it.type.isAir }
 
-        if (targetItem == null && cursorItem == null) return
-
-        if (!storage.setItem(gui.type, guiSlot, cursorItem?.clone())) {
-            sendRefreshMessage(viewer)
+        if (!isSameItem(slotItem, actualItem)) {
+            e.view.topInventory.setItem(guiSlot, actualItem?.clone())
+            gui.storage.refresh()
+            viewer.updateInventory()
+            viewer.sendMessage("§c対象のアイテムが更新されていたため、操作をキャンセルしました")
             return
         }
 
-        if (!storage.save()) {
-            storage.setItem(gui.type, guiSlot, targetItem?.clone())
-            sendRefreshMessage(viewer)
+        if (actualItem == null && cursorItem == null) return
+
+        if (!gui.storage.setItem(gui.type, guiSlot, cursorItem?.clone())) {
+            viewer.sendMessage("§c操作に失敗しました")
             return
         }
 
-        viewer.setItemOnCursor(targetItem?.clone())
+        viewer.setItemOnCursor(actualItem?.clone())
         e.view.topInventory.setItem(guiSlot, cursorItem?.clone())
 
-        storage.refresh()
+        gui.storage.refresh()
         viewer.updateInventory()
         viewer.sendMessage("§aアイテムを交換しました")
     }
 
-    private fun sendRefreshMessage(viewer: Player) {
-        viewer.sendMessage("§c操作に失敗しました、インベントリを開きなおして更新してください")
+    private fun isSameItem(
+        first: ItemStack?,
+        second: ItemStack?,
+    ): Boolean {
+        if (first == null || first.type.isAir) {
+            return second == null || second.type.isAir
+        }
+
+        if (second == null || second.type.isAir) {
+            return false
+        }
+
+        return first.isSimilar(second) && first.amount == second.amount
     }
 }

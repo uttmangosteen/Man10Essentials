@@ -60,11 +60,6 @@ class OnlinePlayerInvseeStorage(
         }
     }
 
-    override fun save(): Boolean {
-        target.updateInventory()
-        return true
-    }
-
     override fun refresh() {
         target.updateInventory()
     }
