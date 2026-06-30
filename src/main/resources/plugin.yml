@@ -13,6 +13,7 @@ commands:
     permission: man10essentials.ec
   hat:
     permission: man10essentials.mhat
+    aliases: [mhat]
 
   # 管理者用コマンドはこれの次の引数で指定
   man10essentials:
